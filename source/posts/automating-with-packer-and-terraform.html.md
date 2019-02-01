@@ -1,5 +1,4 @@
 ---
-layout: default
 title: Automating with Packer and TerraForm
 date: 2016-10-13T08:10:00.000Z
 description: Automating infrastructure with Packer and Terraform
