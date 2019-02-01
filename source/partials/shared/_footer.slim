@@ -10,17 +10,15 @@ footer
   .footer-content
     .container-fluid
       .row
-        .newsletter
+        .blogletter
           form
-            label for="email" Sign up for our newsletter
+            label for="email" Sign up for our blogletter
             input type="email" name="email" placeholder="Your email address"
             button type="submit" Submit
 
         .social
           .icons
-            = link_to '#'
+            = link_to 'https://www.facebook.com/stratotechnology/'
               = image_tag "social/facebook.svg"
-            = link_to '#'
-              = image_tag "social/twitter.svg"
-            = link_to 'https://github.com/tomrutgers/middleman-starter-netlify-cms'
+            = link_to 'https://github.com/stratotechnology'
               = image_tag "social/github.svg"

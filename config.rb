@@ -28,9 +28,9 @@ page "/partials/*", layout: false
 page "/admin/*", layout: false
 
 activate :blog do |blog|
-  blog.permalink = "news/{year}/{title}.html"
+  blog.permalink = "blog/{year}/{title}.html"
   blog.sources = "posts/{title}.html"
-  blog.layout = "news-detail"
+  blog.layout = "blog-detail"
 end
 
 # With alternative layout
@@ -39,12 +39,12 @@ end
 # Proxy pages
 # https://middlemanapp.com/advanced/dynamic-pages/
 
-# proxy product.yml files to product.html 
-data.products.each do |product|
-  # product is an array: [filename, {data}]
-  proxy "/product/#{product[1][:title].parameterize}/index.html", "product.html", 
-  locals: {product: product[1]}, 
-  layout: 'product-detail',
+# proxy service.yml files to service.html 
+data.services.each do |service|
+  # service is an array: [filename, {data}]
+  proxy "/service/#{service[1][:title].parameterize}/index.html", "service.html", 
+  locals: {service: service[1]}, 
+  layout: 'service-detail',
   ignore: true
 end
 

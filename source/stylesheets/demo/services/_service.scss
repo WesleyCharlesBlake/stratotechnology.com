@@ -1,4 +1,4 @@
-%product {
+%service {
   color: $text-color;
   margin-bottom: 30px;
 
@@ -21,11 +21,11 @@
     @extend %img-responsive;
   }
 
-  .product-image, .product-content {
+  .service-image, .service-content {
     background-color: #fff;
   }
 
-  .product-content {
+  .service-content {
     padding: 10px 30px;
   }
 

@@ -2,7 +2,7 @@ const BlogPreview = ({ entry, widgetFor }) => {
   const data = entry.get('data').toJS()
   const date = dayjs(data.date).format('DD-MM-YY')
   return (
-    <div className="news-detail">
+    <div className="blog-detail">
       <div className="container">
         <div className="row">
           <div className="title">
@@ -21,10 +21,10 @@ const BlogPreview = ({ entry, widgetFor }) => {
   )
 }
 
-const ProductPreview = ({ entry, widgetFor }) => {
+const ServicePreview = ({ entry, widgetFor }) => {
   const data = entry.get('data').toJS()
   return (
-    <div className="product-detail">
+    <div className="service-detail">
       <div className="image" style={{ backgroundImage: `url('${data.image}')` }}></div>
       <div className="content">
         <div className="meta">
@@ -90,6 +90,6 @@ const NavigationPreview = ({ entry }) => {
 }
 
 CMS.registerPreviewTemplate('blog', BlogPreview)
-CMS.registerPreviewTemplate('product', ProductPreview)
+CMS.registerPreviewTemplate('service', ServicePreview)
 CMS.registerPreviewTemplate('home', HomePreview)
 CMS.registerPreviewTemplate('navigation', NavigationPreview)

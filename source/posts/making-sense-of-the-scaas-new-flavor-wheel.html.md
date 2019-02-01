@@ -4,7 +4,7 @@ date: 2019-01-31T10:01:00.000Z
 description: >-
   The Coffee Taster’s Flavor Wheel, the official resource used by coffee
   tasters, has been revised for the first time this year.
-image: /images/uploads/news_item-01.jpg
+image: /images/uploads/blog_item-01.jpg
 ---
 Automating with Packer and TerraForm
 
