@@ -7,7 +7,7 @@ image: /images/uploads/terraform.png
 
 [![Po.et verification](https://img.shields.io/badge/Po.et-Verified%20on%20Po.et-green.svg)](https://explorer-mainnet.poetnetwork.net/works/64c8a3722898343c19e58004929114983aa1c5fef4fd655eff9c21028d3f9e9d)
 
-### Automating with Packer and TerraForm
+# Automating with Packer and TerraForm
 
 [Hashicorp](https://www.hashicorp.com/) have created some amazing tools to help engineers in orchestrating cloud architecture. Two tools I want to go through are [Packer](https://www.packer.io/) and [TerraForm](https://www.terraform.io)
 
@@ -26,6 +26,7 @@ Pre-baked machine images open up a lot in terms of delivery of infrastructure in
 * Greater testability
 
 ### [Terraform](https://www.terraform.io/)
+
 #### So what is TerraForm?
 
 > Terraform is a tool for building, changing, and versioning infrastructure safely and efficiently. Terraform can manage existing and popular service providers as well as custom in-house solutions.
@@ -55,7 +56,8 @@ A more complete example of Packer and TerraForm can be found [here](https://gith
 In Packer, your definitions are declared in a `.json` template file. I prefer to name my templates based on their purpose (eg: `app-base.json`)
 
 Lets look at the structure of the template (create an empty file `nano myfirst-packer.json` and add the following resources to your template:
-```
+
+```bash
 {
   "builders": [],
   "description": "A packer example template",
@@ -65,6 +67,7 @@ Lets look at the structure of the template (create an empty file `nano myfirst-p
   "variables": []
 }
 ```
+
 Packer needs to be told what to do, where to do it, provision any other boostrapping requirements etc. What does this mean:
 
 `"builders": [],`:
@@ -80,7 +83,8 @@ Packer needs to be told what to do, where to do it, provision any other boostrap
 > variables allow your templates to be further configured with variables from the command-line, environment variables, or files. This lets you parameterize your templates so that you can keep secret tokens, environment-specific data, and other types of information out of your templates. This maximizes the portability and shareability of the template.
 
 So lets update our template with some builders, provisioners, and variables:
-```
+
+```bash
 {
   "variables": {
       "aws_access_key": "YOURACCESSKEY",
@@ -117,7 +121,8 @@ So lets update our template with some builders, provisioners, and variables:
 The template will not build an AWS AMI, as well as a DigitalOcean snapshot, with the `redis-server` installed. This is very basic, but its upto you to decide how much you want bake into your image, and how much you want to rely on configuration management. This balance is entirely up to your infrastructure/application and deployment requirements.
 
 A more complex provisioner could look like this:
-```
+
+```bash
 "provisioners": [
     {
       "type": "shell",
@@ -170,7 +175,8 @@ Please visit their [site](https://www.terraform.io/downloads.html) and ensure yo
 For this exmample, we are going to use TerraForm to build infrastructure on AWS.
 
 Lets create a basic TerraForm template: `nano example.tf`:
-```
+
+```bash
 provider "aws" {
   access_key = "ACCESS_KEY_HERE"
   secret_key = "SECRET_KEY_HERE"
@@ -192,8 +198,10 @@ TerraForm's documention is very comprehensive, so go through each resource you a
 > Note: You can create a count variable in your resource block, and create n resources from this!
 
 ### Plan
+
 Lets plan an execution with TerraForm. In the same directory as your TerraForm template run `terraform plan`. You will see an out put of all the resources that TerraForm would create (without actually creating it!):
-```
+
+```bash
 $ terraform plan
 ...
 
@@ -221,10 +229,12 @@ $ terraform plan
 If you are happy with out put, you can run plan, alternatively you may need to fix any errors etc. You might also want to store the out put of plan, in order run the execution. There are benefits of storing the plan output
 
 ### Apply
+
 Run `terraform apply` in the same directory as your example.tf to create the resources!
 
 You should see something like this:
-```
+
+```bash
 $ terraform apply
 aws_instance.example: Creating...
   ami:                      "" => "ami-0d729a60"
@@ -241,7 +251,6 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 
 TerraForm is busy creating your resources!
 
-
 ### State
 
 An important concept to be aware of is state.
@@ -250,7 +259,7 @@ Terraform also put some state into the terraform.tfstate file by default. This s
 
 You can inspect the state using `terraform show`:
 
-```
+```bash
 $ terraform show
 aws_instance.example:
   id = i-32cf65a8
